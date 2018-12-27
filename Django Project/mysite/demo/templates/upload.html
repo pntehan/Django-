@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% block content %}
+    <form action="uploaddo" class="form-horizontal" enctype="multipart/form-data" name="upload" method="POST">
+        {% csrf_token %}
+        <input type="file" name="data">
+        <input type="submit">
+    </form>
+{% endblock %}

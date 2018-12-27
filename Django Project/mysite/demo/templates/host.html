@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block content %}
+<script language='javascript' type="text/javascript">
+    function confirmcheck(){
+        var check = confirm('您确定要注销您的账户吗?');
+        if (check == true){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+</script>
+    <div class="col-sm">
+        <div class="card-img-top" style="width: 18rem;">
+            <img class="rounded-0" src="{{MEDIA_URL}}{{info.img}}">
+            <div class="card-body">
+                <p class="card-text">您的用户名：{{info.name}}</p>
+                <p class="card-text">您的账号：{{info.account}}</p>
+            </div>
+            <div>
+                <a href="{% url 'change' %}"><button type="submit" class="btn btn-primary">修改资料</button></a>
+            </div>
+            <br />
+            <div>
+                <a href="{% url 'upload' %}"><button type="submit" class="btn btn-primary">上传资料</button></a>
+            </div>
+            <br />
+            <div>
+                <a href="{% url 'loginout' %}"><button type="submit" class="btn btn-primary">退出登陆</button></a>
+            </div>
+            <br />
+            <div>
+                <a href="{% url 'regiterout' %}"><button type="submit" onclick="return confirmcheck()" class="btn btn-primary">注销账户</button></a>
+            </div>
+        </div>
+        <br />
+    </div>
+{% endblock %}

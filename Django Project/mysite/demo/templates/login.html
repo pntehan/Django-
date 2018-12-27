@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block content %}
+<script language='javascript' type="text/javascript">
+    function loginClick(){
+        var account = document.getElementById('account').value;
+        var pwd = document.getElementById('password').value;
+        if(account == ""){
+            alert('账号不能为空!');
+            return false;
+        }
+        else if(pwd == ""){
+            alert('密码不能为空!');
+            return false;
+        }
+        else if(pwd.length<6){
+            alert('密码长度不能小于六!');
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
+</script>
+<form class="form-horizontal" name="login" method="POST" action="logindo" onsubmit="return loginClick()">
+    {% csrf_token %}
+    <div class="form-group">
+      <label class='col-sm-4 control-label'>账号</label>
+      <div>
+          <input id="account" name="account" type="text" class="form-control" placeholder="输入账户">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-sm-4 control-label">密码</label>
+      <div>
+          <input id="password" name="password" type="password" class="form-control" placeholder="输入密码" minlength="6" maxlength="50" onkeyup="value=value.replace(/[^\w\.\/]/ig,'')">
+      </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-primary">登录</button>
+        </div>
+        <a href="{% url 'regiter' %}" >没有账号?点击注册</a>
+    </div>
+</form>
+{% if mes %}
+    <h4>{{mes}}</h4>
+{% elif quit %}
+    <script language='javascript' type="text/javascript">
+        alert('您已经成功退出登陆......');
+    </script>
+{% else %}
+    <p>{{wrong}}</p>
+{% endif %}
+{% endblock %}

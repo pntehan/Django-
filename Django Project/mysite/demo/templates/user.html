@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% if notfound %}
+        <br />
+        <h1>{{notfound}}</h1>
+    {% else %}
+        <h1>Welcome to PNTEHAN!</h1>
+        <div class="col-sm">
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="{{username.avatar_url}}" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">{{username.name}}</h5>
+                    <p class="card-text">location: {{username.location}}</p>
+                    <p class="card-text">public_repos: {{username.public_repos}}</p>
+                    <p class="card-text">public_gists: {{username.public.gists}}</p>
+                    <p class="card-text">followers: {{username.followers}}</p>
+                    <p class="card-text">following: {{username.following}}</p>
+                    <p class="card-text">created_at: {{username.created_at}}</p>
+                    <p class="card-text">updated_at: {{username.updated_at}}</p>
+                    <a href="{{username.html_url}}" class="btn btn-primary">Go Now</a>
+                </div>
+            </div>
+            <br />
+        </div>
+    {% endif %}
+{% endblock %}
